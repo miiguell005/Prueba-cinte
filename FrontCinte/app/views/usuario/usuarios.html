@@ -1,0 +1,49 @@
+﻿<div>
+    <div class="">
+        <div class="col-md-12">
+            <button class="btn btn-primary" ng-click="user.irAtras()">Átras</button>
+            <div class="text-center">
+                <h1>Usuarios</h1>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <br />
+            <div class="col-md-12">
+                <a class="btn btn-primary" href="#!usuario/0"><i class="fa fa-plus" aria-hidden="true"></i> Crear usuario</a>
+                <br />
+                <br />
+            </div>
+        </div>
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped table-hover table-condensed">
+                    <thead>
+                        <tr>
+                            <th width="80px"></th>
+                            <th><b>Nombre</b></th>
+                            <th><b>Apellido</b></th>
+                            <th><b>Tipo identificación</b></th>
+                            <th><b>Número identificación</b></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="u in user.usuarios">
+                            <td>
+                                <a class="btn btn-default " href="#!usuario/{{u.idUsuario}}" uib-tooltip="Editar usuario" tooltip-placement="Top">
+                                    <i class="fa fa-pencil-square-o"></i>
+                                </a>
+                                <button class="btn btn-default" ng-click="user.eliminarUsuario(u.idUsuario, u.nombre)" uib-tooltip="Eliminar usuario" tooltip-placement="Top">
+                                    <i class="fa fa-trash"></i>
+                                </button>
+                            </td>
+                            <td>{{u.nombre}}</td>
+                            <td>{{u.apellido}}</td>
+                            <td>{{u.tipoIdentificacion.tipo}}</td>
+                            <td>{{u.numeroIdentificacion}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

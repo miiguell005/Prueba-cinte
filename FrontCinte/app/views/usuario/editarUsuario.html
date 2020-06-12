@@ -1,0 +1,85 @@
+﻿<div class="">
+    <div class="col-md-12">
+        <button class="btn btn-primary" ng-click="user.irAtras()">Átras</button>
+        <div class="text-center">
+            <h1>{{user.titulo}}</h1>
+        </div>
+    </div>
+    <form name="myForm">
+        <div class="col-md-12">
+            <div class="col-md-6">
+                <label>Nombre *</label>
+                <input class="form-control" type="text" ng-model="user.usuario.nombre" maxlength="255" required />
+                <div ng-if="user.guardarOprimido && !user.usuario.nombre">
+                    <span class="mensaje-error">El nombre es obligatorio</span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <label>Apellido *</label>
+                <input class="form-control" type="text" ng-model="user.usuario.apellido" maxlength="255" required />
+                <div ng-if="user.guardarOprimido && !user.usuario.apellido">
+                    <span class="mensaje-error">El apellido es obligatorio</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-12">
+            <br />
+            <div class="col-md-6">
+                <label>Tipo de identificación *</label>
+                <select class="form-control" ng-model="user.usuario.idTipoIdentificacion" ng-options="t.idTipoIdentificacion as t.tipo for t in user.tiposIdentificacion"></select>
+                <div ng-if="user.guardarOprimido && !user.usuario.idTipoIdentificacion">
+                    <span class="mensaje-error">Es necesario seleccionar un tipo de identificación</span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <label>Numero identificación *</label>
+                <input class="form-control" type="text" ng-model="user.usuario.numeroIdentificacion"required />
+                <div ng-if="user.guardarOprimido && !user.usuario.numeroIdentificacion">
+                    <span class="mensaje-error">El número de identificación es obligatorio</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-12" ng-if="!user.usuario.idUsuario">
+            <br />
+            <div class="col-md-6">
+                <label>Contraseña *</label>
+                <input class="form-control" type="password" ng-model="user.usuario.contrasenia" maxlength="255" required />
+                <div ng-if="user.guardarOprimido && !user.usuario.contrasenia">
+                    <span class="mensaje-error">La contraseña es obligatoria</span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <label>Repite la contraseña *</label>
+                <input class="form-control" type="password" ng-model="user.usuario.repetirContrasenia" maxlength="255" required />
+                <div ng-if="user.guardarOprimido ">
+                    <span class="mensaje-error" ng-if="!user.usuario.repetirContrasenia">
+                        Repetir la contraseña es obligatorio
+                    </span>
+                    <span class="mensaje-error" ng-if="user.guardarOprimido && user.usuario.repetirContrasenia != user.usuario.contrasenia">
+                        La contraseña no coincide
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-12">
+            <br />
+            <div class="col-md-6">
+                <label>Correo *</label>
+                <input class="form-control" type="email" ng-model="user.usuario.correo" name="micorreo" maxlength="255" required />
+                <div ng-if="user.guardarOprimido ">
+                    <span class="mensaje-error" ng-if="!myForm.micorreo.$valid">Formato de correo no aceptado</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-12">
+            <div class="text-center">
+                <br />
+                <button class="btn btn-primary" ng-click="user.guardar()">Guardar</button>
+            </div>
+        </div>
+    </form>
+</div>

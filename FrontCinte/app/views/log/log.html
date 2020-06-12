@@ -1,0 +1,44 @@
+﻿<div>
+    <div class="">
+        <div class="col-md-12">
+            <button class="btn btn-primary" ng-click="log.irAtras()">Átras</button>
+            <div class="text-center">
+                <h1>Log</h1>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <br />
+            <div class="col-md-12">
+                <a class="btn btn-primary" href="#!usuario/0"><i class="fa fa-plus" aria-hidden="true"></i> Crear usuario</a>
+                <br />
+                <br />
+            </div>
+        </div>
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped table-hover table-condensed">
+                    <thead>
+                        <tr>
+                            <th><b>Fecha</b></th>
+                            <th><b>IdUsuario</b></th>
+                            <th><b>Usuario</b></th>
+                            <th><b>Evento</b></th>
+                            <th><b>Detalle</b></th>
+                            <th><b>Excepcion</b></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="l in log.logs">
+                            <td>{{l.fecha | date :  "dd/MM/yyyy"}}</td>
+                            <td>{{l.idUsuario}}</td>
+                            <td>{{l.usuario}}</td>
+                            <td>{{l.evento}}</td>
+                            <td>{{l.detalle}}</td>
+                            <td>{{l.excepcion}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

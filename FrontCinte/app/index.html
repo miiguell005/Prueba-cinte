@@ -1,0 +1,75 @@
+﻿
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <link href="css/main.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/1.3.1/css/toastr.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <div ng-app="Cinte" ng-controller="mainController as $ctrl">
+        <!--=============== Menú superior ===============-->
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">CINTE</a>
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav" ng-if="logeado">
+                        <li class="active"><a href="#!triqui">Triqui</a></li>
+                        <li><a href="#!usuarios">Usuarios</a></li>
+                        <li><a href="#!log">Log</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right" ng-if="!logeado">
+                        <li><a href="#!usuario/0"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                        <li><a href="#!login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right" ng-if="logeado">
+                        <li><a ng-click="$ctrl.logOut()"><span class="fa fa-sign-out"></span> Log out</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!--=============== Fin Menú superior ===============-->
+
+        <div ng-view></div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-animate/1.8.0/angular-animate.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-resource/1.8.0/angular-resource.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/amplifyjs/1.1.2/amplify.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/1.3.1/js/toastr.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.10.2/underscore-min.js"></script>
+
+
+    <script src="app.js"></script>
+
+    <script src="scripts/controllers/main/mainController.js"></script>
+    <script src="scripts/controllers/login/loginController.js"></script>
+    <script src="scripts/controllers/juegos/triquiController.js"></script>
+    <script src="scripts/controllers/usuario/editarUsuarioController.js"></script>
+    <script src="scripts/controllers/usuario/usuariosController.js"></script>
+    <script src="scripts/controllers/log/log.js"></script>
+
+    <script src="services/SUsuario.js"></script>
+    <script src="services/UserService.js"></script>
+    <script src="services/STipoIdentificacion.js"></script>
+    <script src="services/SInterceptors.js"></script>
+    <script src="services/SLog.js"></script>
+    <script src="services/STriqui.js"></script>
+
+</body>
+</html>

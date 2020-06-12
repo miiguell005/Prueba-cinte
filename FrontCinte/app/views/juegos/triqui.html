@@ -1,0 +1,94 @@
+﻿<div class="col-xs-12">
+    <div class="text-center">
+        <h2>Tres en linea (Triqui) <button class="btn " ng-click="init()"><i class="fa fa-refresh"></i></button></h2>
+        <br />
+    </div>
+
+    <!--=============== Registro de usuarios ================-->
+    <div class="row" ng-if="!juego.turno">
+
+        <div class="col-xs-12 text-center">
+            <button class="btn btn-primary" ng-click="asignarConfiguracion(2, false, '')">2 Jugadores</button>&nbsp;&nbsp;
+            <button class="btn btn-primary" ng-click="asignarConfiguracion(1, true, 'Máquina')">1 Jugador</button>
+            <br /><br />
+        </div>
+
+        <div ng-class="{'col-xs-6': cantidadJugadores== 2, 'col-xs-offset-3 col-xs-6': cantidadJugadores== 1}" class="col-xs-6">
+            Nombre del jugador 1
+            <input type="text" class="form-control" ng-model="juego.jugador1.nombre" ng-change=" mensajesError['nombreJugador1'] = null" />
+            <span ng-if="mensajesError['nombreJugador1']">
+                {{mensajesError["nombreJugador1"]}}
+            </span>
+        </div>
+        <div class="col-xs-6" ng-if="cantidadJugadores == 2">
+            Nombre del jugador 2
+            <input type="text" class="form-control" ng-model="juego.jugador2.nombre" ng-change=" mensajesError['nombreJugador2'] = null" />
+            <span ng-if="mensajesError['nombreJugador2']">
+                {{mensajesError["nombreJugador2"]}}
+            </span>
+        </div>
+        <div class="col-xs-12 text-center">
+            <br />
+            <button class="btn btn-primary" ng-click="comenzarJuego(cantidadJugadores)">Comensar juego</button>
+
+        </div>
+
+    </div>
+    <!--============= Fin registro de usuarios ==============-->
+    <!--================= Juego de triqui ===================-->
+    <div class="row" ng-if="juego.turno">
+
+        <div class="col-xs-12">
+            <div class="row">
+                <div class="col-xs-6">
+                    <div class="panel" ng-class="{'panel-primary': juego['jugador1'].ganador === null,
+                                 'panel-danger': juego['jugador1'].ganador === false, 'panel-success': juego['jugador1'].ganador === true}">
+
+                        <div ng-class="{'panel-heading': juego.turno == 'jugador1' || juego['jugador1'].ganador !== null,
+                                     'panel-body': juego.turno == 'jugador2' && juego['jugador1'].ganador === null }">
+
+                            {{juego['jugador1'].nombre}}
+                            <img src="imagenes/triqui/{{juego['jugador1'].estrategia ? juego['jugador1'].estrategia : 'b'}}.PNG" width="50px" height="50px" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6">
+                    <div class="panel " ng-class="{'panel-primary': juego['jugador2'].ganador === null,
+                                 'panel-danger': juego['jugador2'].ganador === false, 'panel-success': juego['jugador2'].ganador === true}">
+
+                        <div ng-class="{'panel-heading': juego.turno == 'jugador2' || juego['jugador2'].ganador !== null,
+                                     'panel-body': juego.turno == 'jugador1' && juego['jugador2'].ganador === null}">
+
+                            {{juego['jugador2'].nombre}}
+                            <img src="imagenes/triqui/{{juego['jugador2'].estrategia ? juego['jugador2'].estrategia : 'b'}}.PNG" width="50px" height="50px" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <center>
+            <table class="" style="border: hidden">
+                <tbody>
+                    <tr ng-repeat="t in juego.tablero">
+                        <td ng-repeat="c in t.columna" style="    border: 2px solid #000000;">
+                            <img ng-click="realizarJugada(c)" src="imagenes/triqui/{{c.celda ? c.celda : 'b'}}.PNG"
+                                 width="100px" height="100px" />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <br />
+            <div class="text-center" ng-if="juego.mensaje">
+
+                <h2>{{juego.mensaje}}</h2>
+
+                <button class="btn btn-primary" ng-click="init()">Reiniciar partida</button>
+            </div>
+            <div ng-if="!juego.mensaje">
+                <h2>Es el turno de {{juego[juego.turno].nombre}}</h2>
+            </div>
+        </center>
+    </div>
+    <!--=============== Fin Juego de triqui =================-->
+</div>

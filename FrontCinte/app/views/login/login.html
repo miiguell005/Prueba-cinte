@@ -1,0 +1,27 @@
+﻿<div class="row" id="pwd-container">
+    <div class="col-md-4 col-sm-3"></div>
+    <div class="col-md-4 col-sm-6">
+        <section class="login-form">
+            <form class="htmlform" role="login">
+                <div><i class="fa fa-3x">  CINTE</i></div>
+
+                <input class="form-control input-lg" type="text" placeholder="Número de identificación"
+                       ng-model="login.usuario.numeroIdentificacion" required />
+                <input class="form-control input-lg" type="password" ng-model="login.usuario.contrasenia"
+                       placeholder="Contraseña" required />
+
+                <div class="pwstrength_viewport_progress"></div>
+
+                <div class="text-center">
+                    <br />
+                    <a class="btn btn-lg btn-primary" href="#!usuario/0">Registrarse</a>
+                    <button class="btn btn-lg btn-primary" ng-click="login.login()">Ingresar</button>
+                </div>
+            </form>
+        </section>
+        <div class="alert alert-danger" role="alert" ng-if="!login.usuarioValido">
+            Usuario o contraseña incorrecta
+        </div>
+    </div>
+    <div class="col-md-4 col-sm-3"></div>
+</div>
